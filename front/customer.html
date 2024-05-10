@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>customer manage</h1>
+    <div id="list"></div>
+    <table id="tbl" border="1"></table>
+    <script>
+        fetch("http://localhost:3000/customer")
+        .then(result => result.json())
+        .then(result => {
+            for(customer of result){
+                const newTag = 
+				`<tr>
+					<td class="text-center">${customer.id}</td>
+					<td class="text-center">${customer.name}</td>
+					<td class="text-center">${customer.email}</td>
+					<td class="text-center">${customer.phone}</td>
+                    <td class="text-center">${customer.address}</td>
+					<td class="text-center">
+						<button class="btnUpd">조회</button>
+						<button class="btnDel">삭제</button>
+					</td>
+				</tr>`;
+                list.insertAdjacentHTML("beforeend", newTag);
+
+                let fieldList = ['id', 'name', 'email', 'address']
+                let row = tbl.insertRow();
+                for(field of fieldList) {
+                    let td = row.insertCell();
+                    td.innerText = customer[field]
+                }
+            }
+        })
+    </script>
+</body>
+<!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
+</html>
