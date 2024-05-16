@@ -34,9 +34,8 @@ function TodoApp(props) {
   ));
 
   async function addTask(name) {
-    //const newTask = { id: `todo-${nanoid()}`, name, completed: false };
-    //axios
-    const resp = await axios.post(url, {name})
+      //axios
+      const resp = await axios.post(url, {name})
       let insertId = resp.data.insertedId;
       const newTask = { id: `todo-${insertId}`, name, completed: false };
       setTasks([...tasks, newTask]);
@@ -44,12 +43,13 @@ function TodoApp(props) {
    
 
 
-  function toggleTaskCompleted(id) {
+  async function toggleTaskCompleted(id) {
+    const findTask = tasks.find((task) => id === task.id)
+    //axios
+    //await
+    const resp = await axios.put(url + "/" + id, { completed : !findTask.completed });
     const updatedTasks = tasks.map((task) => {
-      // if this task has the same ID as the edited task
       if (id === task.id) {
-        // use object spread to make a new object
-        // whose `completed` props has been inverted
         return { ...task, completed: !task.completed };
       }
       return task;
@@ -57,18 +57,19 @@ function TodoApp(props) {
     setTasks(updatedTasks);
   }
 
-  function deleteTask(id) {
-
+  async function deleteTask(id) {
+    const resp = await axios.delete(url + "/" + id)
     const remainingTasks = tasks.filter((task) => id !== task.id);
     setTasks(remainingTasks);
   }
 
-  function editTask(id, newName) {
+  async function editTask(id, name) {
+    const resp = await axios.put(url + "/" + id , {name});
     const editedTaskList = tasks.map((task) => {
       // 이 할 일이 편집된 작업과 동일한 ID를 갖는 경우
       if (id === task.id) {
         //
-        return { ...task, name: newName };
+        return { ...task, name: name };
       }
       return task;
     });
@@ -107,6 +108,6 @@ function TodoApp(props) {
       </ul>
     </div>
   );
-;}
+}
 
 export default TodoApp;

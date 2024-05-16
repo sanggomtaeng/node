@@ -5,8 +5,8 @@ const mysql = require("../mysql");
 const sql = {
     todoList : "select * from todo",
     insertTodo : "insert into todo set ?",
-    updateTodo : "update todo set complete=? where no=?",
-    deleteTodo : "delete from todo where no=?",
+    updateTodo : "update todo set ? where id=?",
+    deleteTodo : "delete from todo where id=?",
 }
 
 //전체조회
@@ -23,17 +23,16 @@ router.post("/", async(req, res) => {
 });
 
 //수정
-router.put("/:no", async(req, res) => {
-    const body = req.body;
-    const no = req.params.no;
-    let result = await mysql.query(sql.updateTodo, [body, no]);
+router.put("/:id", async(req, res) => {
+    const id = req.params.id;
+    let result = await mysql.query(sql.updateTodo, [req.body, id]);
     res.send(result);
 });
 
 //삭제
-router.delete("/:no", async(req, res) => {
-    const no = req.params.no;
-    let result = await mysql.query(sql.deleteTodo, no);
+router.delete("/:id", async(req, res) => {
+    const id = req.params.id;
+    let result = await mysql.query(sql.deleteTodo, id);
     res.send(result);
 });
 
