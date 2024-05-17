@@ -10,14 +10,12 @@ function App() {
     <div className="App">
       <nav className="navbar bg-body-tertiary">
         <div className="container-fluid">
-          <div className="row">
-          <div className="col-4">
-            <ul className="nav flex-column">
-              <li className="nav-item"><NavLink className="nav-link" to="/">Home</NavLink></li>
-              <li className="nav-item"><NavLink className="nav-link" to="/BoardList">BoardList</NavLink></li>
-              <li className="nav-item"><NavLink className="nav-link" to="/BoardInsert">BoardInsert</NavLink></li>
+          <div className="col-6">
+            <ul className="nav">
+              <li className="nav-item"><NavLink className="nav-link" to="/">홈</NavLink></li>
+              <li className="nav-item"><NavLink className="nav-link" to="/BoardList">게시글 목록</NavLink></li>
+              <li className="nav-item"><NavLink className="nav-link" to="/BoardInsert">게시글 등록</NavLink></li>
             </ul>
-          </div>
           <Routes>
             <Route path="/" element={<Home />}></Route>
             <Route path="/BoardList" element={<BoardList />}></Route>

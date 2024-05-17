@@ -14,7 +14,7 @@ function BoardList() {
     }
 
     useEffect( () => { callAPI(); },[])
-    if(loading) return <div><h2>로딩중입니다...</h2></div>
+    if(loading) return <div><h2>Loading...</h2></div>
 
     return(
         <>

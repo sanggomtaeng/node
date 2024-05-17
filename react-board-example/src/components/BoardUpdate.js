@@ -24,7 +24,7 @@ function BoardUpdate() {
     const goBack = () => {navigation(-1)};
     const updateBoard = async () => {
         const change = {title:form.title, body:form.body};
-        const update = await axios.put(`http://localhost:8000/board/${boardId}`, change);
+        await axios.put(`http://localhost:8000/board/${boardId}`, change);
         navigation(`/BoardList/${boardId}`);
     }
 
@@ -32,10 +32,12 @@ function BoardUpdate() {
         <div className="card" style={{width: "25rem"}}>
         <div className="card-head"> {form.writer} {form.date} </div>
         <div className="card-body">
-            <input className="card-title" value={form.title}
-            onChange={e=>{setForm({...form, title:e.target.value}) }}></input>
-            <textarea className="card-text" value={form.body}
-            onChange={e=>{setForm({...form, body:e.target.value}) }}></textarea>
+            <div className="input-group flex-nowrap">
+            <input className="form-control" value={form.title}
+            onChange={e=>{setForm({...form, title:e.target.value}) }}></input></div>
+            <div className="input-group flex-nowrap">
+            <textarea className="form-control" value={form.body}
+            onChange={e=>{setForm({...form, body:e.target.value}) }}></textarea></div>
             <button onClick={updateBoard} className="btn btn-primary">저장</button>
             <button onClick={goBack} className="btn btn-primary">취소</button>
         </div>

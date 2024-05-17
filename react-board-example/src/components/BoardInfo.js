@@ -23,7 +23,7 @@ function BoardInfo() {
     }
 
     useEffect( () => { callAPI(); },[]);
-    if(lodaing) return <div><h2>로딩중입니다...</h2></div>
+    if(lodaing) return <div><h2>Loading...</h2></div>
 
     const goBack = () => {navigation(-1)};
 

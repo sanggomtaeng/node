@@ -20,16 +20,16 @@ function BoardInsert() {
 
     return(
         <>
-        <input type="text" name="title" placeholder="제목입력" value={title}
-                onChange={e=>{setFormdata({...formdata, title:e.target.value}) }}></input>
-        <input type="text" name="body" placeholder="내용입력" value={body}
-                onChange={e=>{setFormdata({...formdata, body:e.target.value}) }}></input>
-        <input type="text" name="writer" placeholder="작가입력"  value={writer} onKeyDown={keyDownHandler}
-                onChange={e=>{setFormdata({...formdata, writer:e.target.value})}}></input>
-        <button onClick={clickHandler}>등록</button>
-        <h2>제목 : {title}</h2>
-        <h2>내용 : {body}</h2>
-        <h2>작가 : {writer}</h2>
+        <div className="input-group flex-nowrap">
+        <input type="text" className="form-control" name="title" placeholder="제목입력" value={title}
+                onChange={e=>{setFormdata({...formdata, title:e.target.value}) }}></input></div>
+        <div className="input-group flex-nowrap">
+        <input type="text" className="form-control" name="body" placeholder="내용입력" value={body}
+                onChange={e=>{setFormdata({...formdata, body:e.target.value}) }}></input></div>
+        <div className="input-group flex-nowrap">
+        <input type="text" className="form-control" name="writer" placeholder="작가입력"  value={writer} onKeyDown={keyDownHandler}
+                onChange={e=>{setFormdata({...formdata, writer:e.target.value})}}></input></div>
+        <button onClick={clickHandler} className="btn btn-primary mb-3">등록</button>
         </>
     )
 }
