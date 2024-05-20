@@ -29,7 +29,7 @@ function BoardInsert() {
         <div className="input-group flex-nowrap">
         <input type="text" className="form-control" name="writer" placeholder="작가입력"  value={writer} onKeyDown={keyDownHandler}
                 onChange={e=>{setFormdata({...formdata, writer:e.target.value})}}></input></div>
-        <button onClick={clickHandler} className="btn btn-primary mb-3">등록</button>
+        <button onClick={clickHandler} className="btn btn-primary mb-6">등록</button>
         </>
     )
 }
