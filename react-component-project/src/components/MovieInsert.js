@@ -13,6 +13,8 @@ function MovieInsert() {
         const insert = await axios.post('http://localhost:8000/movie', formdata);
         setFormdata(insert);
         setFormdata({title:"", image:"", openDate:"", runTime:"", audience:"", body:""});
+        alert('등록이 완료되었습니다');
+        navigation('/MovieList');
     }
 
     const keyDownHandler = (e) => {
