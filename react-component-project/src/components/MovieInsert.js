@@ -10,7 +10,7 @@ function MovieInsert() {
     useEffect( () => {}, [] )
 
     const clickHandler = async () => {
-        const insert = await axios.post('http://localhost:8000/movie', formdata);
+        const insert = await axios.post('http://192.168.0.23:8000/movie', formdata);
         setFormdata(insert);
         setFormdata({title:"", image:"", openDate:"", runTime:"", audience:"", body:""});
         alert('등록이 완료되었습니다');

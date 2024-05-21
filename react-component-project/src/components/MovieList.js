@@ -6,7 +6,7 @@ function MovieList() {
     const [movies, setMovies] = useState([]);
 
     const callAPI = async () => {
-        const result = await axios.get('http://localhost:8000/movie');
+        const result = await axios.get('http://192.168.0.23:8000/movie');
         setMovies(result.data);
     }
 
